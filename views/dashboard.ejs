@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            color: #FFFFFF;
+            border-bottom: 1px solid #FFFFFF;
+        }
+
+        .nav form button {
+            color: white;
+        }
+
+        .nav form button:hover {
+            color: gray;
+            transition: all 0.3s ease;
+        }
+
+        .input-container {
+            padding: 30px 10px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 2%;
+            border-bottom: 1px solid #FFFFFF;
+        }
+
+        .input-container button {
+            background-color: #0036C2;
+            padding: 7px;
+            border-radius: 10px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        input {
+            width: 65%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+            color: black;
+        }
+
+        input::placeholder {
+            opacity: 0.6;
+            color: black;
+        }
+
+        label {
+            font-size: 1.2rem;
+        }
+
+
+        .show_more {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            background-color: blue;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .show_more:hover {
+            background-color: darkblue;
+            color: #FFFFFF;
+        }
+
+        .show_more:active {
+            background-color: navy;
+            color: #FFFFFF;
+        }
+
+        .show_more:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px white, 0 0 0 4px blue;
+        }
+
+        .show_more {
+            margin: 10px 0;
+        }
+
+        .books-container {
+            width: 100%;
+            padding: 30px;
+        }
+
+        .btns {
+            width: 95%;
+            padding: 0 25px;
+        }
+
+        #item_list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2%;
+            color: black;
+            padding: 0;
+        }
+
+        #item_list h5 {
+            font-size: 2rem;
+            color: blue;
+            font-weight: 500;
+            text-transform: capitalize;
+        }
+
+        #item_list p {
+            font-size: 1rem;
+            color: black;
+            padding-top: 0.3rem;
+        }
+
+        .card {
+            min-width: 300px;
+            margin: 10px 0;
+        }
+
+        .card-btn {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .book-price {
+            font-size: 1rem;
+        }
+
+        .book-category {
+            font-weight: 500;
+            font-size: 1.3rem;
+            color: black;
+            padding-top: 0.3rem;
+        }
+
+        .edit-me,
+        .delete-me {
+            width: 100%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="nav">
+        <h1 class="heading">Inventory Management</h1>
+        <form action='/logout' method="POST">
+            <button class="btn">Logout<button>
+        </form>
+    </div>
+
+    <form action="/create-item" id="create_form" method="POST" class="input-container">
+        <div>
+            <label for="bookTitle">Title:-</label>
+            <input id="bookTitle" placeholder="Enter Title Here" name='bookTitle' type="text" />
+        </div>
+
+        <div>
+            <label for="bookAuthor">Author:-</label>
+            <input id="bookAuthor" placeholder="Enter Author Here" name='bookAuthor' type="text" />
+        </div>
+
+        <div>
+            <label for="bookPrice">Price:-</label>
+            <input id="bookPrice" placeholder="Enter Title Here" name='bookPrice' type="text" />
+        </div>
+
+        <div>
+            <label for="bookCategory">Category:-</label>
+            <input id="bookCategory" placeholder="Enter Title Here" name='bookCategory' type="text" />
+        </div>
+
+        <div>
+            <button>Add Book</button>
+        </div>
+    </form>
+
+
+    <!-- Cards -->
+    <div class='books-container'>
+        <h1>Add Books</h1>
+        <ul id="item_list"></ul>
+    </div>
+
+    <div class='books-container btns'>
+        <button class="show_more btn">Show more</button>
+    </div>
+
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="/browser.js">
+    </script>
+</body>
+
+</html>
